@@ -16,8 +16,14 @@ def load_binary_task():
 
     # train val split
     train_text, val_text, train_label, val_label = train_test_split(train_data['comment_text'], train_data['label'], random_state=42,
-                                              test_size=0.2)
+                                              test_size=0.1)
 
-    val_text, test_text, val_label, test_label = train_test_split(val_text, val_label, random_state=42, test_size=0.5)
+    test_data = pd.read_csv('data/test.csv')
+
+    test_text = test_data['comment_text']
+
+    test_label_frame = pd.read_csv('data/test_labels.csv')
+    test_label = binarize(test_label_frame)
+
 
     return train_text, val_text, train_label, val_label, test_text, test_label
