@@ -1,3 +1,5 @@
+## Take-home messages for the best practices session
+
 1) Module structure, separation into different files
 2) Have a requirements.py file + using virtual environments
 
