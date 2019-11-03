@@ -1,0 +1,7 @@
+gensim
+matplotlib
+pandas
+sklearn
+plotly
+zeugma
+imblearn
