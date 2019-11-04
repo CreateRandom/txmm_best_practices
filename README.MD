@@ -1,3 +1,5 @@
+## Take-home messages for the best practices session
+
 1) Module structure, separation into different files
 2) Have a requirements.py file + using virtual environments
 
@@ -9,7 +11,7 @@
 7) Train - val - test split, only use test at the very end
 
 8) Sklearn interface using transform, fit and fit_transform
-9) Simple bag-of-words classification with Naive Bayes
+9) Simple bag-of-words classification with Naive Bayes / LinearSVC
 10) Class imbalance and the inadequacy of accuracy --> ROC and AUC
 11) Error analysis and testing your model
 
