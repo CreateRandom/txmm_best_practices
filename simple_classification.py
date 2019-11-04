@@ -6,7 +6,7 @@ from sklearn.svm import LinearSVC, SVC
 
 from data.loading import load_binary_task
 from evaluation.evaluation import plot_confusion_matrix, binary_metrics, plot_roc
-from evaluation.helpers import get_classification_status
+from evaluation.helpers import get_classification_status, print_examples
 from features.feature_importance import get_most_important_features_nb, get_most_important_features_svm
 
 if __name__ == '__main__':
@@ -47,32 +47,17 @@ if __name__ == '__main__':
     print(pos_features)
 
     # showcase the roc?
-   # probas = clf.predict_proba(X_val)
-   # plot_roc(val_label, probas[:, 1])
+
+    # probas = clf.predict_proba(X_val)
+    # plot_roc(val_label, probas[:, 1])
 
     # show some cases where the model erred
     states = get_classification_status(val_label, preds)
 
     false_positives = np.where(states == 'FP')[0]
     print(f'Found {len(false_positives)} false positives')
-    input_text = 'y'
-    ind = 0
-    while ind < len(false_positives):
-        input_text = input('Print? ')
-        if input_text == 'n':
-            break
-        text_index = false_positives[ind]
-        print(val_text.iloc[text_index])
-        ind += 1
+    print_examples(val_text, false_positives)
 
     false_negatives = np.where(states == 'FN')[0]
     print(f'Found {len(false_negatives)} false negatives')
-    input_text = 'y'
-    ind = 0
-    while ind < len(false_negatives):
-        input_text = input('Print? ')
-        if input_text == 'n':
-            break
-        text_index = false_negatives[ind]
-        print(val_text.iloc[text_index])
-        ind += 1
+    print_examples(val_text, false_negatives)
