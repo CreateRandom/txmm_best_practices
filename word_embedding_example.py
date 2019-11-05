@@ -10,7 +10,6 @@ from zeugma.embeddings import EmbeddingTransformer
 
 from data.loading import load_binary_task
 from evaluation.evaluation import binary_metrics, plot_confusion_matrix
-from grid_search import get_column_names
 import numpy as np
 import plotly.io as pio
 

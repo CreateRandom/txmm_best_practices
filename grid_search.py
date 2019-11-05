@@ -1,7 +1,4 @@
-from gensim.models import KeyedVectors
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.linear_model import SGDClassifier
-from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import LinearSVC
@@ -9,28 +6,12 @@ from sklearn.svm import LinearSVC
 from data.loading import load_binary_task
 
 import plotly.io as pio
+
+from util.utils import get_column_names
+
 pio.renderers.default = "browser"
 import plotly.express as px
 import pandas as pd
-
-
-def get_column_names(param_dict, frame):
-    columns = []
-    for name in param_dict.keys():
-        old_name = 'param_' + name
-        frame.rename(columns={old_name: name}, inplace=True)
-
-        # unpack tuples for plotting
-        if results_frame[name].apply(lambda x: isinstance(x, tuple)).all():
-            # always take the last element
-            results_frame[name] = results_frame[name].apply(lambda x: x[-1])
-
-        # try to force to numeric
-        frame[name] = pd.to_numeric(frame[name], errors='ignore')
-        columns.append(name)
-    return columns
-
-
 
 if __name__ == '__main__':
     train_text, val_text, train_label, val_label, test_text, test_label = load_binary_task()
@@ -57,7 +38,7 @@ if __name__ == '__main__':
     results = gs_clf.cv_results_
     results_frame = pd.DataFrame(results)
 
-    columns = get_column_names(parameters,results_frame)
+    columns = get_column_names(parameters, results_frame)
     columns.append('mean_test_score')
     fig = px.parallel_coordinates(results_frame, dimensions=columns)
     pio.show(fig)
