@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import LinearSVC
 
-from data.loading import load_binary_task
+from data.loading import load_spam_classification_task
 
 import plotly.io as pio
 
@@ -14,7 +14,7 @@ import plotly.express as px
 import pandas as pd
 
 if __name__ == '__main__':
-    train_text, val_text, train_label, val_label, test_text, test_label = load_binary_task()
+    train_text, val_text, train_label, val_label, test_text, test_label = load_spam_classification_task()
 
     # build the model pipeline
 
@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
     # think about which parameters to showcase here
     parameters = {
-        'vect__ngram_range': [(1, 1), (1, 2)],
-        'clf__C': (1e-0, 1e-1, 1e-2, 1e-3),
+        'vect__ngram_range': [(1, 1), (1, 2), (1, 3)],
+        'clf__C': (1e1,1e0, 1e-1, 1e-2, 1e-3, 1e-4),
     }
 
     # wrap in the GridSearchCV object

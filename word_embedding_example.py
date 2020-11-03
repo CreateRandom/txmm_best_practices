@@ -8,7 +8,7 @@ from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 from zeugma.embeddings import EmbeddingTransformer
 
-from data.loading import load_binary_task
+from data.loading import load_binary_task_toxic
 from evaluation.evaluation import binary_metrics, plot_confusion_matrix
 import numpy as np
 import plotly.io as pio
@@ -18,7 +18,7 @@ pio.renderers.default = "browser"
 
 
 if __name__ == '__main__':
-    train_text, val_text, train_label, val_label, test_text, test_label = load_binary_task()
+    train_text, val_text, train_label, val_label, test_text, test_label = load_binary_task_toxic()
 
     # load up a model
     model = KeyedVectors.load_word2vec_format('data/word2vec_6B_50.txt', limit=100000)
