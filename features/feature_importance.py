@@ -4,8 +4,8 @@ def get_most_important_features_nb(nb_classifier, feature_names, n=10):
     neg_class_prob_sorted = nb_classifier.feature_log_prob_[0, :].argsort()
     pos_class_prob_sorted = nb_classifier.feature_log_prob_[1, :].argsort()
 
-    neg_features = np.take(feature_names, neg_class_prob_sorted[:n])
-    pos_features = np.take(feature_names, pos_class_prob_sorted[:n])
+    neg_features = np.take(feature_names, neg_class_prob_sorted[-n:])
+    pos_features = np.take(feature_names, pos_class_prob_sorted[-n:])
     return neg_features, pos_features
 
 def get_most_important_features_svm(svc_classifier, feature_names, n=10):
