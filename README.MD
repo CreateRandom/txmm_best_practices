@@ -1,17 +1,20 @@
-## Take-home messages for the best practices session
+# Best practices for Text and Multimedia Mining
+This repository contains the code for a small video tutorial offered to students of Text and Multimedia Mining at Radboud University. 
 
-1) Module structure, separation into different files
-2) Have a requirements.py file + using virtual environments
+## Take home messages
+
+1) Maintain module structure and separation of code into different files
+2) Have a requirements.py file and use virtual environments
 
 3) Debugging, break points, stepping through execution frames
 4) Refactoring with PyCharm (renaming / moving)
 
 5) Data loading with pandas
 6) Inspecting your data and the class distribution
-7) Train - val - test split, only use test at the very end
+7) Train - val - test split, only use test set at the very end
 
 8) Sklearn interface using transform, fit and fit_transform
-9) Simple bag-of-words classification with Naive Bayes / LinearSVC
+9) Simple bag-of-words classification with Naive Bayes
 10) Class imbalance and the inadequacy of accuracy --> ROC and AUC
 11) Error analysis and testing your model
 
